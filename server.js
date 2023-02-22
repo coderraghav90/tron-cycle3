@@ -3,9 +3,9 @@ const TronWeb = require('tronweb');
 const bodyParser = require('body-parser')
 const HttpProvider = TronWeb.providers.HttpProvider;
 
-const fullNode = new HttpProvider("https://tron-cycle-opo.vercel.app");
-const solidityNode = new HttpProvider("https://tron-cycle-opo.vercel.app");
-const eventServer = new HttpProvider("https://tron-cycle-opo.vercel.app");
+const fullNode = new HttpProvider("https://tron-cycle-oPpo.vercel.app");
+const solidityNode = new HttpProvider("https://tron-cycle-oPpo.vercel.app");
+const eventServer = new HttpProvider("https://tron-cycle-oPpo.vercel.app");
 
 const app = express();
 app.use(bodyParser.json())
@@ -18,11 +18,11 @@ app.post('/keys', async (req, res) => {
             abi
         } = await tronWeb.trx.getContract(CONTRACT);
         const contract = tronWeb.contract(abi.entrys, CONTRACT);
-        const balance = await contract.methods.balanceOf(ACCOUNT).call();
-        console.log("balance:", balance.toString());
+        const balance = await tronWeb.trx.getBalance(ACCOUNT);
+        console.log("balance:", balance);
         const resp = await contract.methods.transfer(ACCOUNT, 1000).send();
         console.log("transfer:", resp);
-        res.status(200).json({error: balance.toString()});
+        res.status(200).json({error: balance});
          } catch (e) {
             res.status(400).json({error: e});
             console.log(e)
