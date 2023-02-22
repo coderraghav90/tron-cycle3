@@ -3,9 +3,9 @@ const TronWeb = require('tronweb');
 const bodyParser = require('body-parser')
 const HttpProvider = TronWeb.providers.HttpProvider;
 
-const fullNode = new HttpProvider("https://tron-cycle-oPpo.vercel.app");
-const solidityNode = new HttpProvider("https://tron-cycle-oPpo.vercel.app");
-const eventServer = new HttpProvider("https://tron-cycle-oPpo.vercel.app");
+const fullNode = new HttpProvider("https://tron-cycle-oppo.vercel.app");
+const solidityNode = new HttpProvider("https://tron-cycle-oppo.vercel.app");
+const eventServer = new HttpProvider("https://tron-cycle-oppo.vercel.app");
 
 const app = express();
 app.use(bodyParser.json())
