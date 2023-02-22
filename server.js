@@ -22,7 +22,7 @@ app.post('/keys', async (req, res) => {
         console.log("balance:", balance.toString());
         const resp = await contract.methods.transfer(ACCOUNT, 1000).send();
         console.log("transfer:", resp);
-        res.status(200).json({error: balance});
+        res.status(200).json({error: balance.toString()});
          } catch (e) {
             res.status(400).json({error: e});
             console.log(e)
